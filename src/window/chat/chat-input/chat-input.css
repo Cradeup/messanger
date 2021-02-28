@@ -1,0 +1,41 @@
+.chat-input-parrent{
+    width: 560px;
+    height: 60px;
+    display: flex;
+}
+
+.chat-input{
+    width: 530px;
+    height: 45px;
+    box-shadow: 0px 0px 0px 1px #e6e6e6;
+    border-radius: 30px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.chat-input-element{
+    display: inline-block;
+    margin-left: 40px;
+    width: 400px;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.chat-input-element::placeholder{
+    font-size: 13px;
+}
+
+.chat-input-element:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.input-button-parrent{
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 500;
+    display: none;
+    cursor: pointer;
+}

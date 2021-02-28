@@ -1,0 +1,22 @@
+.chat-parrent-inner{
+    height: 600px;
+}
+
+.chat-inner{
+    height: 536px;
+}
+
+.chat{
+    height: 476px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header{
+    height: 64px;
+    box-shadow: 1px 0px 0px 1px #e6e6e6;
+    display: flex;
+    align-items: center;
+    padding-left: 38px;
+}

@@ -1,0 +1,18 @@
+.chat-companion-img{
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: auto;
+}
+
+.chat-companion-name{
+    display: inline-block;
+    align-self: center;
+    margin-left: 8px;
+    font-weight: 500;
+}
+
+.chat-companion-card-parrent{
+    display: flex;
+}

@@ -1,0 +1,11 @@
+.message-par{
+    box-shadow: 0 0 1px #ababab;
+    margin: 6px;
+    padding: 7px;
+    display: table;
+    border-radius: 12px 12px 12px 0px;
+    display: inline-block;
+    max-width: 50%;
+    height: auto;
+    word-wrap: break-word;
+}

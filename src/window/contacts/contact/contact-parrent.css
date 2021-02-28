@@ -1,0 +1,49 @@
+.contact-parrent{
+    width: 390px;
+    height: 82px;
+    /* box-shadow: 0 0 1px #ababab; */
+    display: flex;
+}
+
+.dialogs-profile-img-par{
+    display: inline-block;
+    margin: 9px;
+    vertical-align: middle
+}
+
+.dialogs-profile-img{
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}
+
+.dialog-content-par{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 14px;
+}
+
+.dialog-profile-name{  
+    font-weight: 600; 
+    margin-bottom: 12px;
+}
+
+.last-message-img{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.dialog-profile-last-message{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    font-weight: 400;
+    margin-left: 7px;
+    color: #636363;
+}
+
+.last-message-img-par{
+    display: inline-block;
+}

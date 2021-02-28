@@ -1,0 +1,9 @@
+.window-parrent{
+    width: 950px;
+    height: 600px;
+    box-shadow: 0 0 1px #ababab;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    overflow: hidden;
+}

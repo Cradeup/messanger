@@ -1,0 +1,12 @@
+.select-chat-par{
+    text-align: center;
+}
+
+.select-chat-header{
+    height: 64px;
+    box-shadow: 0px 0px 0px 1px #e6e6e6;
+}
+
+.select-chat-text{
+    margin-top: 40%;
+}
