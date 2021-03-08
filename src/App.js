@@ -1,12 +1,19 @@
 import Window from './window/window'
 import './App.css';
+import Auth from './window/auth/auth';
+import { Route, Switch } from 'react-router';
 
-function App() {
+function App(props) {
+
   return (
-        <div className="App">
-          <Window />
-        </div>
+    <div className="App">
+      <Switch>
+        <Route path="/auth" render={() => <Auth />} />
+        <Route path="/" render={() => <Window />} />
+      </Switch>
+    </div>
   );
 }
 
-export default App;
+
+export default App

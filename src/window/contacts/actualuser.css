@@ -1,0 +1,10 @@
+.actual-user-nickname-par{
+    display: flex;
+    height: 64px;
+    width: 390px;
+    justify-content: center;
+}
+
+.actual-user-nickname{
+    align-self: center;
+}

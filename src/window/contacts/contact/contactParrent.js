@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 
 function ContactParrent(props) {
-    let { firstName, secondName, profileImage } = props.users.find(user => user.id === props.dialog.members.find(member => member !== props.actualUserId))
-    let lastMessageImageSrc = props.users.find(user => user.id === props.dialog.lastMessage.id).profileImage
+    let dialogId = props.dialog.dialog.id
+    let name = props.dialog.user.firstName + ' ' + props.dialog.user.secondName
+    let lastMessage = props.dialog.dialog.lastMessage.message
+    let profileImage = props.dialog.user.profileImage
     
     return (
-        <Link to={props.dialog.id}>
+        <Link to={dialogId}>
             <div className='contact-parrent'>
                 <div>
                     <div className='dialogs-profile-img-par'>
@@ -15,14 +17,13 @@ function ContactParrent(props) {
                     </div>
                     <div className='dialog-content-par'>
                         <div className='dialog-profile-name'>
-                            {firstName + ' '}
-                            {secondName}
+                            {name}
                         </div>
                         <div className='last-message-img-par'>
-                            <img className='last-message-img' src={lastMessageImageSrc} />
+                            {/* <img className='last-message-img' src={lastMessageImageSrc} /> */}
                         </div>
                         <div className='dialog-profile-last-message'>
-                            {props.dialog.lastMessage.message}
+                            {lastMessage}
                         </div>
                     </div>
                 </div>
@@ -33,8 +34,7 @@ function ContactParrent(props) {
 
 function mapStateToProps(state) {
     return {
-        users: state.chatReducer.users,
-        actualUserId: state.chatReducer.actualUserId
+        actualUserId: state.authReducer.actualUserId
     }
 }
 

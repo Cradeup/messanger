@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Message } from './message';
 import ChatInput from './chat-input/chat-input';
 import ChatCompanionCard from './chatCompanionCard';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { fetchMessages } from '../../redux/actions';
 
 function Chat(props) {
@@ -25,7 +25,7 @@ function Chat(props) {
     useEffect(() => {
         getMessages()
     }, [dialogId])
-    
+
 
 
 
@@ -36,9 +36,7 @@ function Chat(props) {
         dialog = props.chat.messages.map(message => { if (props.actualUserId !== message.senderId) { return <Message styleMove={"flex-start"} styleBorder={"12px 12px 12px 0px"} message={message} key={message.messageId} /> } else { return <Message styleMove={"flex-end"} styleBorder={"12px 12px 0px 12px"} styleColor={"#ededed"} message={message} key={message.messageId} /> } })
     }
 
-    let companion = props.users.find(user => user.id === props.dialogs.find(dialog => dialog.id === dialogId).members.find(member => member !== props.actualUserId))
-
-    // console.log(dialog)
+    let companion = props.companion
 
 
 
@@ -61,7 +59,8 @@ function Chat(props) {
 function mapStateToProps(state) {
     return {
         chat: state.chatReducer.chat,
-        actualUserId: state.chatReducer.actualUserId,
+        companion: state.chatReducer.companion,
+        actualUserId: state.authReducer.actualUserId,
         dialogs: state.dialogsReducer.dialogs,
         dialogsStatus: state.dialogsReducer.status,
         users: state.chatReducer.users,

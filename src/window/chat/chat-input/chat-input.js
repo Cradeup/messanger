@@ -63,7 +63,7 @@ function ChatInput(props) {
 
 function mapStateToProps(state) {
     return {
-        actualUserId: state.chatReducer.actualUserId,
+        actualUserId: state.authReducer.actualUserId,
         newMessage: state.chatReducer.newMessage
     }
 }

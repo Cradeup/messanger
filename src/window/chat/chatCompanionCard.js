@@ -1,6 +1,7 @@
 import './chatCompanionCard.css'
 
 function ChatCompanionCard(props) {
+
     return (
         <div className="chat-companion-card-parrent">
                 <img className="chat-companion-img" src={props.props.profileImage} />

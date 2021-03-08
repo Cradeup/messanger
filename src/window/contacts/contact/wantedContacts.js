@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 function WantedContact(props) {
-    let wantedContactDialogId = props.dialogs.find(dialog => dialog.members.includes(props.props.id || props.actualUserId)).id
+    let wantedContactDialogId = props.dialogs.find(dialog => dialog.dialog.members.includes(props.props.id || props.actualUserId)).dialog.id
     return (
         <Link to={wantedContactDialogId}>
             <div className='searched-contact-parrent'>
@@ -24,7 +24,7 @@ function WantedContact(props) {
 function mapStateToProps(state) {
     return {
         users: state.chatReducer.users,
-        actualUserId: state.chatReducer.actualUserId,
+        actualUserId: state.authReducer.actualUserId,
         dialogs: state.dialogsReducer.dialogs,
     }
 }

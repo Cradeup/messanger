@@ -12,8 +12,8 @@ export default createReducer(initialState, {
             state.users = []
         }
     },
-    [USERS.FETCH_SUCCES]: (state, action) => {
+    [USERS.FETCH_USERS_SUCCES]: (state, action) => {
         state.status = 'loaded'
-        
+        state.users.push(action.payload)
     }
 }) 

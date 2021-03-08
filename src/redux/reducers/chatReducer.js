@@ -1,34 +1,10 @@
 import { createReducer } from '@reduxjs/toolkit'
+import { fetchJSON } from '../../fetch-json'
 import { CHAT } from '../types'
 import { CONTACTS } from '../types'
 import { MESSAGES } from '../types'
-
-let currentId = localStorage.getItem('id') ?? 'id0'
 const initialState = {
-    actualUserId: currentId,
-    users: [
-        {
-            id: 'id0',
-            nickName: 'maks007',
-            firstName: 'Максим',
-            secondName: 'Егоров',
-            profileImage: 'https://o-prirode.ru/wp-content/uploads/2019/03/loshad.jpg'
-        },
-        {
-            id: 'id1',
-            nickName: '2012Alik',
-            firstName: 'Алишер',
-            secondName: 'Усманов',
-            profileImage: 'https://semena-partner.ru/upload/medialibrary/58a/58aa92914062bc07b09986bf8343bb18.jpg'
-        },
-        {
-            id: 'id2',
-            nickName: 'knightofnight',
-            firstName: 'Степан',
-            secondName: 'Маришин',
-            profileImage: 'https://www.anti-malware.ru/files/styles/imagesize400w/public/images/source/snimok_ekrana_2019-02-12_v_10.10.34.png?itok=msSLV76G'
-        },
-    ],
+    users: [],
     chat: [],
     newMessage:
     {
@@ -36,6 +12,7 @@ const initialState = {
     },
     contactsWanted: '',
     status: 'waiting',
+    companion: {},
 }
 
 export default createReducer(initialState, {
@@ -44,8 +21,21 @@ export default createReducer(initialState, {
         state.newMessage = ({ senderId: message.actualUserId, message: message.value, id: message.dialogId })
     },
     [CHAT.ON_CHAT_INPUT_SUBMIT]: (state, action) => {
-        let messageId = parseInt(state.chat.find(chat => chat.id === action.payload).messages[state.chat.find(chat => chat.id === action.payload).messages.length - 1].messageId) + 1
-        state.chat.find(chat => chat.id === action.payload).messages.push({ senderId: state.newMessage.senderId, message: state.newMessage.message, messageId: messageId })
+        let messageId = parseInt(state.chat.messages.length)
+        state.chat.messages.push({ senderId: state.newMessage.senderId, message: state.newMessage.message, messageId: messageId })
+        fetchJSON('http://localhost:3000/addmessage', {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify({ message: state.newMessage.message, id: state.chat.id, actualUserId: state.authReducer.actualUserId })
+        })
         state.newMessage = ''
     },
     [CONTACTS.ON_CONTACTS_SEARCH_INPUT_CHANGE]: (state, action) => {
@@ -60,10 +50,10 @@ export default createReducer(initialState, {
         }
     },
     [MESSAGES.FETCH_MESSAGES_SUCCES]: (state, action) => {
-        state.chat = action.payload
+        state.chat = action.payload.messages
+        state.companion = action.payload.companion
         state.status = 'loaded'
         console.log('messages status ' + state.status)
-        console.log(state.chat)
     },
     [MESSAGES.FETCH_MESSAGES_FAIL]: (state) => {
         state.status = 'failed'

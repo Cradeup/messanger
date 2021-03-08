@@ -1,0 +1,15 @@
+.auth-parent{
+    height: 320px;
+    width: 420px;
+    box-shadow: 0 0 1px #999999;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    width: 220px;
+    height: 24px;
+}

@@ -20,7 +20,7 @@ function ChatParrent(props) {
 function mapStateToProps(state) {
     return {
         users: state.chatReducer.users,
-        actualUserId: state.chatReducer.actualUserId
+        actualUserId: state.authReducer.actualUserId
     }
 }
 
