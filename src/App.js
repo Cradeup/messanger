@@ -1,10 +1,9 @@
 import Window from './window/window'
 import './App.css';
 import Auth from './window/auth/auth';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, withRouter } from 'react-router';
 
 function App(props) {
-
   return (
     <div className="App">
       <Switch>
@@ -16,4 +15,4 @@ function App(props) {
 }
 
 
-export default App
+export default App 

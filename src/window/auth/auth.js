@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './auth.css'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { connect } from "react-redux";
 import { fetchAuthData, onAuthInputChangeReducer, setDialogsFetchStatusToWaiting, setAuthFetchStatusToWaiting } from "../../redux/actions";
 
@@ -14,11 +14,13 @@ function Auth(props) {
         let action = onAuthInputChangeReducer(loginPassword)
         props.dispatch(action)
     }
+    useEffect(() => {
+        if (props.authFetchStatus !== 'waiting') {
+            let action = setAuthFetchStatusToWaiting()
+            props.dispatch(action)
+        }
+    })
 
-    if (props.authFetchStatus !== 'waiting') {
-        let action = setAuthFetchStatusToWaiting()
-        props.dispatch(action)
-    }
 
     function onAuthSubmit() {
         if (props.authFetchStatus === 'waiting') {
